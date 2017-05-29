@@ -26,6 +26,4 @@ $theme_name["ita"] = "semplice senza javascript";
 $theme_name["es"] = "simple sin javascript";
 
 
-
-
 ?>

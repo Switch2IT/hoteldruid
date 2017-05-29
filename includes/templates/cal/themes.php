@@ -21,8 +21,7 @@
 ##################################################################################
 
 
-
-global $template_theme_name,$template_theme_colors,$template_theme_values,$template_theme_html_pre,$template_theme_html_post;
+global $template_theme_name, $template_theme_colors, $template_theme_values, $template_theme_html_pre, $template_theme_html_post;
 
 $template_theme_name = "";
 $template_theme_colors = "";
@@ -36,16 +35,16 @@ $template_theme_colors[1][2]['name'] = "background";
 $template_theme_colors[1][2]['default'] = "#ffffff";
 $template_theme_colors[1][3]['name'] = "background 2";
 $template_theme_colors[1][3]['default'] = "#ebebeb";
-$template_theme_values[1][1]['name'] = mex("URL della home",$pag);
+$template_theme_values[1][1]['name'] = mex("URL della home", $pag);
 $template_theme_values[1][1]['default'] = $dati_struttura[4];
 $template_theme_values[1][1]['replace'] = "<div class=\"homebox\"><a href=\"[theme_value_1]\" style=\"color: [theme_color_1];\" target=\"_top\">[theme_value_2]</a></div>";
-$template_theme_values[1][2]['name'] = mex("URL del logo",$pag);
+$template_theme_values[1][2]['name'] = mex("URL del logo", $pag);
 $template_theme_values[1][2]['default'] = $dati_struttura[15];
 $template_theme_values[1][2]['replace'] = "<img style=\"text-decoration: none; border: 0px;\" src=\"[theme_value_2]\" alt=\"[theme_value_3]\">";
 $template_theme_values[1][2]['null'] = "[theme_value_3]";
-$template_theme_values[1][3]['name'] = mex("Torna alla HOME",$pag);
-$template_theme_values[1][3]['default'] = mex2("Torna alla HOME",$pag,$lingua_modello);
-$template_theme_values[1][4]['name'] = mex("URL file css",$pag);
+$template_theme_values[1][3]['name'] = mex("Torna alla HOME", $pag);
+$template_theme_values[1][3]['default'] = mex2("Torna alla HOME", $pag, $lingua_modello);
+$template_theme_values[1][4]['name'] = mex("URL file css", $pag);
 $template_theme_values[1][4]['default'] = "";
 $template_theme_values[1][4]['replace'] = "<link rel=\"stylesheet\" type=\"text/css\" href=\"[theme_value_4]\" media=\"all\">";
 $template_theme_html_pre[1] = "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01//EN\"
@@ -79,7 +78,6 @@ $framed_mode_extra_head[1] = "<style type=\"text/css\">
  div.cal_title { text-align: center; }
  a { color: [theme_color_1]; }
 </style>";
-
 
 
 ?>

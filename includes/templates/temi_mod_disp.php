@@ -21,7 +21,7 @@
 ##################################################################################
 
 
-global $template_theme_name,$template_theme_colors,$template_theme_values,$template_theme_html_pre,$template_theme_html_post;
+global $template_theme_name, $template_theme_colors, $template_theme_values, $template_theme_html_pre, $template_theme_html_post;
 
 $template_theme_name = "";
 $template_theme_colors = "";
@@ -44,8 +44,8 @@ $template_theme_values[1][2]['default'] = $dati_struttura[15];
 $template_theme_values[1][2]['replace'] = "<img style=\"text-decoration: none; border: 0px;\" src=\"[theme_value_2]\" alt=\"[theme_value_3]\">";
 $template_theme_values[1][2]['null'] = "[theme_value_3]";
 $template_theme_values[1][3]['name'] = "home";
-$template_theme_values[1][3]['default'] = "".mex2("Torna alla HOME",$pag,$lingua_modello)."";
-$template_theme_values[1][4]['name'] = mex("URL file css",$pag);
+$template_theme_values[1][3]['default'] = "" . mex2("Torna alla HOME", $pag, $lingua_modello) . "";
+$template_theme_values[1][4]['name'] = mex("URL file css", $pag);
 $template_theme_values[1][4]['default'] = "";
 $template_theme_values[1][4]['replace'] = "<link rel=\"stylesheet\" type=\"text/css\" href=\"[theme_value_4]\" media=\"all\">";
 $template_theme_html_pre[1] = "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01//EN\"
@@ -74,7 +74,7 @@ $template_theme_html_pre[1] = "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01//EN
 [theme_value_1]
 
 <div class=\"mainbox\"><big><big>
-".mex2("Controlla la disponibilità",$pag,$lingua_modello)."</big></big><br><br>
+" . mex2("Controlla la disponibilità", $pag, $lingua_modello) . "</big></big><br><br>
 
 <table class=\"formframe\" border=1 cellspacing=0 cellpadding=16>
 <tr><td>
@@ -121,8 +121,6 @@ $framed_mode_extra_head[2] = "<style type=\"text/css\">
 $framed_mode_example[2] = "<iframe src=\"[page_url]?framed=1\" 
 style=\"width: 800px; height: 36px;\" frameborder=\"0\">
 </iframe>";
-
-
 
 
 ?>

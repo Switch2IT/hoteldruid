@@ -21,46 +21,46 @@
 ##################################################################################
 
 
-$tableanni = $PHPR_TAB_PRE."anni";
+$tableanni = $PHPR_TAB_PRE . "anni";
 $tipo_periodi = esegui_query("select * from $tableanni where idanni = $anno");
-$tipo_periodi = risul_query($tipo_periodi,0,'tipo_periodi');
+$tipo_periodi = risul_query($tipo_periodi, 0, 'tipo_periodi');
 if ($tipo_periodi == "g") {
-$parola_settimanale = "giornaliero";
-$parola_settimanali = "giornalieri";
-$parola_settimane = "giorni";
-$parola_Settimane = "Giorni";
-$parola_settimana = "giorno";
-$parola_settiman = "giorn";
-$parola_sett = "gio";
-$parola_le = "i";
-$parola_Le = "I";
-$parola_la = "il";
-$parola_La = "Il";
-$parola_alla = "al";
-$lettera_e = "i";
-$lettera_a = "o";
-$lettera_a2 = "";
-$lettera_s = "g";
-$sillaba_che = "ci";
+    $parola_settimanale = "giornaliero";
+    $parola_settimanali = "giornalieri";
+    $parola_settimane = "giorni";
+    $parola_Settimane = "Giorni";
+    $parola_settimana = "giorno";
+    $parola_settiman = "giorn";
+    $parola_sett = "gio";
+    $parola_le = "i";
+    $parola_Le = "I";
+    $parola_la = "il";
+    $parola_La = "Il";
+    $parola_alla = "al";
+    $lettera_e = "i";
+    $lettera_a = "o";
+    $lettera_a2 = "";
+    $lettera_s = "g";
+    $sillaba_che = "ci";
 } # fine if ($tipo_periodi == "g")
 else {
-$parola_settimanale = "settimanale";
-$parola_settimanali = "settimanali";
-$parola_settimane = "settimane";
-$parola_Settimane = "Settimane";
-$parola_settimana = "settimana";
-$parola_settiman = "settiman";
-$parola_sett = "sett";
-$parola_le = "le";
-$parola_Le = "Le";
-$parola_la = "la";
-$parola_La = "La";
-$parola_alla = "alla";
-$lettera_e = "e";
-$lettera_a = "a";
-$lettera_a2 = "a";
-$lettera_s = "s";
-$sillaba_che = "che";
+    $parola_settimanale = "settimanale";
+    $parola_settimanali = "settimanali";
+    $parola_settimane = "settimane";
+    $parola_Settimane = "Settimane";
+    $parola_settimana = "settimana";
+    $parola_settiman = "settiman";
+    $parola_sett = "sett";
+    $parola_le = "le";
+    $parola_Le = "Le";
+    $parola_la = "la";
+    $parola_La = "La";
+    $parola_alla = "alla";
+    $lettera_e = "e";
+    $lettera_a = "a";
+    $lettera_a2 = "a";
+    $lettera_s = "s";
+    $sillaba_che = "che";
 } # fine else if ($tipo_periodi == "g")
 
 

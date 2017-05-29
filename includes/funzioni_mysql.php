@@ -32,164 +32,178 @@ $DATETIME = "datetime";
 $MEDIUMTEXT = "mediumtext";
 
 
-function connetti_db ($database,$host,$port,$user,$password,$estensione) {
+function connetti_db($database, $host, $port, $user, $password, $estensione)
+{
 
-if ($estensione == "SI") dl("mysql.so");
-$numconnessione = mysql_connect("$host:$port",$user,$password);
-@mysql_query("SET NAMES 'utf8'");
-mysql_select_db($database);
+    if ($estensione == "SI") dl("mysql.so");
+    $numconnessione = mysql_connect("$host:$port", $user, $password);
+    @mysql_query("SET NAMES 'utf8'");
+    mysql_select_db($database);
 
-return $numconnessione;
+    return $numconnessione;
 
 } # fine function connetti_db
 
 
-function disconnetti_db ($numconnessione) {
+function disconnetti_db($numconnessione)
+{
 
-$risul = mysql_close($numconnessione);
-return $risul;
+    $risul = mysql_close($numconnessione);
+    return $risul;
 
 } # fine function disconnetti_db
 
 
-if (substr($PHPR_LOG,0,2) != "SI") {
+if (substr($PHPR_LOG, 0, 2) != "SI") {
 
-function esegui_query ($query,$silenzio = "",$idlog = "") {
+    function esegui_query($query, $silenzio = "", $idlog = "")
+    {
 
-$risul = mysql_query($query);
-if (!$risul and !$silenzio) {
-global $PHPR_TAB_PRE;
-echo "<br>ERROR IN: ".str_replace(" ".$PHPR_TAB_PRE," ",$query)." <br>".mysql_errno().": ".mysql_error()."<br>";
-} # fine if (!$risul and !$silenzio)
+        $risul = mysql_query($query);
+        if (!$risul and !$silenzio) {
+            global $PHPR_TAB_PRE;
+            echo "<br>ERROR IN: " . str_replace(" " . $PHPR_TAB_PRE, " ", $query) . " <br>" . mysql_errno() . ": " . mysql_error() . "<br>";
+        } # fine if (!$risul and !$silenzio)
 
-return $risul;
+        return $risul;
 
-} # fine function esegui_query
+    } # fine function esegui_query
 
 } # fine if (substr($PHPR_LOG,0,2) != "SI")
 
 
 else {
-if (!function_exists("inserisci_log")) include("./includes/funzioni_log.php");
+    if (!function_exists("inserisci_log")) include("./includes/funzioni_log.php");
 
-function esegui_query ($query,$silenzio = "",$idlog = "") {
+    function esegui_query($query, $silenzio = "", $idlog = "")
+    {
 
-$risul = mysql_query($query);
-if (!$risul and !$silenzio) {
-global $PHPR_TAB_PRE;
-echo "<br>ERROR IN: ".str_replace(" ".$PHPR_TAB_PRE," ",$query)." <br>".mysql_errno().": ".mysql_error()."<br>";
-} # fine if (!$risul and !$silenzio)
+        $risul = mysql_query($query);
+        if (!$risul and !$silenzio) {
+            global $PHPR_TAB_PRE;
+            echo "<br>ERROR IN: " . str_replace(" " . $PHPR_TAB_PRE, " ", $query) . " <br>" . mysql_errno() . ": " . mysql_error() . "<br>";
+        } # fine if (!$risul and !$silenzio)
 
-if ($idlog != 1) inserisci_log($query,$idlog);
+        if ($idlog != 1) inserisci_log($query, $idlog);
 
-return $risul;
+        return $risul;
 
-} # fine function esegui_query
+    } # fine function esegui_query
 
 } # fine else if (substr($PHPR_LOG,0,2) != "SI")
 
 
-function risul_query ($query,$riga,$colonna,$tab="") {
+function risul_query($query, $riga, $colonna, $tab = "")
+{
 
-$risul = mysql_result($query,$riga,$colonna);
+    $risul = mysql_result($query, $riga, $colonna);
 #if (!$risul) echo "<br>Nessun risultato in riga $riga colonna $colonna<br>";
 
-return $risul;
+    return $risul;
 
 } # fine function risul_query
 
 
-function numlin_query ($query) {
+function numlin_query($query)
+{
 
-$risul = mysql_num_rows($query);
-return $risul;
+    $risul = mysql_num_rows($query);
+    return $risul;
 
 } # fine function numlin_query
 
 
-function aggslashdb ($stringa) {
+function aggslashdb($stringa)
+{
 
-$risul = addslashes($stringa);
-return $risul;
+    $risul = addslashes($stringa);
+    return $risul;
 
 } # fine function aggslashdb
 
 
-function arraylin_query ($query,$num) {
+function arraylin_query($query, $num)
+{
 
-mysql_data_seek($query,$num);
-$risul =  mysql_fetch_row($query);
-return $risul;
+    mysql_data_seek($query, $num);
+    $risul = mysql_fetch_row($query);
+    return $risul;
 
 } # fine function arraylin_query
 
 
-function numcampi_query ($query) {
+function numcampi_query($query)
+{
 
-$risul = mysql_num_fields($query);
-return $risul;
+    $risul = mysql_num_fields($query);
+    return $risul;
 
 } # fine function numcampi_query
 
 
-function nomecampo_query ($query,$num) {
+function nomecampo_query($query, $num)
+{
 
-$risul = mysql_field_name($query,$num);
-return $risul;
+    $risul = mysql_field_name($query, $num);
+    return $risul;
 
 } # fine function nomecampo_query
 
 
-function tipocampo_query ($query,$num) {
+function tipocampo_query($query, $num)
+{
 
-$risul = mysql_field_type($query,$num);
-return $risul;
+    $risul = mysql_field_type($query, $num);
+    return $risul;
 
 } # fine function tipocampo_query
 
 
-function dimcampo_query ($query,$num) {
+function dimcampo_query($query, $num)
+{
 
-$risul = mysql_field_len($query,$num);
-return $risul;
+    $risul = mysql_field_len($query, $num);
+    return $risul;
 
 } # fine function dimcampo_query
 
 
-function lock_tabelle ($tabelle,$altre_tab_usate = "",$lock_dir = C_DATI_PATH) {
+function lock_tabelle($tabelle, $altre_tab_usate = "", $lock_dir = C_DATI_PATH)
+{
 
-if (@is_array($tabelle)) {
-for ($num1 = 0 ; $num1 < count($tabelle); $num1++) {
-$lista_tabelle .= $tabelle[$num1]." write,";
-} # fine for $num1
-} # fine if (@is_array($tabelle))
-if (@is_array($altre_tab_usate)) {
-for ($num1 = 0 ; $num1 < count($altre_tab_usate); $num1++) {
-$lista_tabelle .= $altre_tab_usate[$num1]." read,";
-} # fine for $num1
-} # fine if (@is_array($altre_tab_usate))
-$lista_tabelle = substr($lista_tabelle,0,-1);
-$risul = mysql_query("lock tables $lista_tabelle");
-if (!$risul) echo "<br>ERROR IN: lock tables $lista_tabelle<br>".mysql_errno().": ".mysql_error()."<br>";
+    if (@is_array($tabelle)) {
+        for ($num1 = 0; $num1 < count($tabelle); $num1++) {
+            $lista_tabelle .= $tabelle[$num1] . " write,";
+        } # fine for $num1
+    } # fine if (@is_array($tabelle))
+    if (@is_array($altre_tab_usate)) {
+        for ($num1 = 0; $num1 < count($altre_tab_usate); $num1++) {
+            $lista_tabelle .= $altre_tab_usate[$num1] . " read,";
+        } # fine for $num1
+    } # fine if (@is_array($altre_tab_usate))
+    $lista_tabelle = substr($lista_tabelle, 0, -1);
+    $risul = mysql_query("lock tables $lista_tabelle");
+    if (!$risul) echo "<br>ERROR IN: lock tables $lista_tabelle<br>" . mysql_errno() . ": " . mysql_error() . "<br>";
 
-return $risul;
+    return $risul;
 
 } # fine function lock_tabelle
 
 
-function unlock_tabelle ($tabelle_lock,$azione = "") {
+function unlock_tabelle($tabelle_lock, $azione = "")
+{
 
-$risul = mysql_query("unlock tables");
+    $risul = mysql_query("unlock tables");
 
 } # fine function unlock_tabelle
 
 
-function crea_indice ($tabella,$colonne,$nome) {
+function crea_indice($tabella, $colonne, $nome)
+{
 
-mysql_query("alter table $tabella add index $nome ($colonne)");
+    mysql_query("alter table $tabella add index $nome ($colonne)");
 
 } # fine function crea_indice
-
 
 
 ?>

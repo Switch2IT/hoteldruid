@@ -21,7 +21,7 @@
 ##################################################################################
 
 
-global $template_name,$template_name_show,$template_file_name,$template_data_dir;
+global $template_name, $template_name_show, $template_file_name, $template_data_dir;
 $template_name = "rates_table_template";
 $template_name_show = "";
 $template_name_show['en'] = "Rates table page";
@@ -33,7 +33,6 @@ $template_file_name['en'] = "rates_table_tpl.php";
 $template_file_name['ita'] = "mdl_tabella_tariffe.php";
 $template_file_name['es'] = "mdl_tabla_tarifas.php";
 $template_data_dir = "rat";
-
 
 
 ?>

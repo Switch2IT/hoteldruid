@@ -21,78 +21,191 @@
 ##################################################################################
 
 
+function mext_cal($messaggio, $pag, $lingua = "")
+{
+    if ($lingua) $lingua_mex = $lingua;
+    else global $lingua_mex;
 
-function mext_cal ($messaggio,$pag,$lingua="") {
-if ($lingua) $lingua_mex = $lingua;
-else global $lingua_mex;
+    if ($lingua_mex != "en" and $lingua_mex != "ita" and $lingua_mex != "es") {
+        if (@is_file("./includes/lang/$lingua_mex/modt_cal.php")) include("./includes/lang/$lingua_mex/modt_cal.php");
+    } # fine if ($lingua_mex != "en" and...
 
-if ($lingua_mex != "en" and $lingua_mex != "ita" and $lingua_mex != "es") {
-if (@is_file("./includes/lang/$lingua_mex/modt_cal.php")) include("./includes/lang/$lingua_mex/modt_cal.php");
-} # fine if ($lingua_mex != "en" and...
-
-if ($tr != 1) {
+    if ($tr != 1) {
 
 # messaggi in inglese di default
-if ($lingua_mex != "es" and $lingua_mex != "ita") {
-switch ($messaggio) {
-case "Pagina del calendario della disponibilità":	$messaggio = "Page of the availability calendar"; $tr = 1; break;
-case "Mostra le date":  		$messaggio = "Show dates"; $tr = 1; break;
-case "Stile tabella":  			$messaggio = "Table style"; $tr = 1; break;
-case "-->":  				$messaggio = "-->"; $tr = 1; break;
-case "<--":  				$messaggio = "<--"; $tr = 1; break;
-case "Prima data selezionaza":  	$messaggio = "First selected date"; $tr = 1; break;
-case "data attuale":  			$messaggio = "current date"; $tr = 1; break;
-case "data fissa":  			$messaggio = "fixed date"; $tr = 1; break;
-case "Numero di settimane della tabella":	$messaggio = "Number of table weeks"; $tr = 1; break;
-case "Numero di giorni della tabella":	$messaggio = "Number of table days"; $tr = 1; break;
-case "Crea la pagina con il calendario della disponibilità":	$messaggio = "Create the page with the availability calendar"; $tr = 1; break;
-case "è stato selezionato di raggruppare con le regole 2, ma non ne è stata inserita nessuna, quindi la tabella non verrà mostrata":	$messaggio = "you have selected grouping with rules 2, but none has been inserted, so the table will not be shown"; $tr = 1; break;
-case "":  				$messaggio = ""; $tr = 1; break;
-case "":  				$messaggio = ""; $tr = 1; break;
+        if ($lingua_mex != "es" and $lingua_mex != "ita") {
+            switch ($messaggio) {
+                case "Pagina del calendario della disponibilità":
+                    $messaggio = "Page of the availability calendar";
+                    $tr = 1;
+                    break;
+                case "Mostra le date":
+                    $messaggio = "Show dates";
+                    $tr = 1;
+                    break;
+                case "Stile tabella":
+                    $messaggio = "Table style";
+                    $tr = 1;
+                    break;
+                case "-->":
+                    $messaggio = "-->";
+                    $tr = 1;
+                    break;
+                case "<--":
+                    $messaggio = "<--";
+                    $tr = 1;
+                    break;
+                case "Prima data selezionaza":
+                    $messaggio = "First selected date";
+                    $tr = 1;
+                    break;
+                case "data attuale":
+                    $messaggio = "current date";
+                    $tr = 1;
+                    break;
+                case "data fissa":
+                    $messaggio = "fixed date";
+                    $tr = 1;
+                    break;
+                case "Numero di settimane della tabella":
+                    $messaggio = "Number of table weeks";
+                    $tr = 1;
+                    break;
+                case "Numero di giorni della tabella":
+                    $messaggio = "Number of table days";
+                    $tr = 1;
+                    break;
+                case "Crea la pagina con il calendario della disponibilità":
+                    $messaggio = "Create the page with the availability calendar";
+                    $tr = 1;
+                    break;
+                case "è stato selezionato di raggruppare con le regole 2, ma non ne è stata inserita nessuna, quindi la tabella non verrà mostrata":
+                    $messaggio = "you have selected grouping with rules 2, but none has been inserted, so the table will not be shown";
+                    $tr = 1;
+                    break;
+                case "":
+                    $messaggio = "";
+                    $tr = 1;
+                    break;
+                case "":
+                    $messaggio = "";
+                    $tr = 1;
+                    break;
 
-case "var_stile_tabella_cal":  		$messaggio = "var_cal_table_style"; $tr = 1; break;
-case "var_data_preselezionata":  	$messaggio = "var_default_date"; $tr = 1; break;
-case "var_numero_giorni":  		$messaggio = "var_days_number"; $tr = 1; break;
-case "var_fr_":  			$messaggio = "var_phr_"; $tr = 1; break;
-case "var_fr_":  			$messaggio = "var_phr_"; $tr = 1; break;
-} # fine switch ($messaggio)
-} # fine if ($lingua_mex != "es" and $lingua_mex != "ita")
+                case "var_stile_tabella_cal":
+                    $messaggio = "var_cal_table_style";
+                    $tr = 1;
+                    break;
+                case "var_data_preselezionata":
+                    $messaggio = "var_default_date";
+                    $tr = 1;
+                    break;
+                case "var_numero_giorni":
+                    $messaggio = "var_days_number";
+                    $tr = 1;
+                    break;
+                case "var_fr_":
+                    $messaggio = "var_phr_";
+                    $tr = 1;
+                    break;
+                case "var_fr_":
+                    $messaggio = "var_phr_";
+                    $tr = 1;
+                    break;
+            } # fine switch ($messaggio)
+        } # fine if ($lingua_mex != "es" and $lingua_mex != "ita")
 
-if ($lingua_mex == "es") {
-switch ($messaggio) {
-case "Pagina del calendario della disponibilità":	$messaggio = "Página del calendario de la disponibilidad"; $tr = 1; break;
-case "Mostra le date":  		$messaggio = "Enseñar las fechas"; $tr = 1; break;
-case "Stile tabella":  			$messaggio = "Estilo de la tabla"; $tr = 1; break;
-case "-->":  				$messaggio = "-->"; $tr = 1; break;
-case "<--":  				$messaggio = "<--"; $tr = 1; break;
-case "Prima data selezionaza":  	$messaggio = "Primera fecha seleccionada"; $tr = 1; break;
-case "data attuale":  			$messaggio = "fecha actual"; $tr = 1; break;
-case "data fissa":  			$messaggio = "fech fija"; $tr = 1; break;
-case "Numero di settimane della tabella":	$messaggio = "Número de semanas de la tabla"; $tr = 1; break;
-case "Numero di giorni della tabella":	$messaggio = "Número de dias dela tabla"; $tr = 1; break;
-case "Crea la pagina con il calendario della disponibilità":	$messaggio = "Crear la página con el calendario de la disponibilidad"; $tr = 1; break;
-case "è stato selezionato di raggruppare con le regole 2, ma non ne è stata inserita nessuna, quindi la tabella non verrà mostrata":	$messaggio = "se ha seleccionado agrupar con las reglas 2, pero ninguna ha sido insertada, así que no se mostrará la tabla"; $tr = 1; break;
-case "":  				$messaggio = ""; $tr = 1; break;
-case "":  				$messaggio = ""; $tr = 1; break;
+        if ($lingua_mex == "es") {
+            switch ($messaggio) {
+                case "Pagina del calendario della disponibilità":
+                    $messaggio = "Página del calendario de la disponibilidad";
+                    $tr = 1;
+                    break;
+                case "Mostra le date":
+                    $messaggio = "Enseñar las fechas";
+                    $tr = 1;
+                    break;
+                case "Stile tabella":
+                    $messaggio = "Estilo de la tabla";
+                    $tr = 1;
+                    break;
+                case "-->":
+                    $messaggio = "-->";
+                    $tr = 1;
+                    break;
+                case "<--":
+                    $messaggio = "<--";
+                    $tr = 1;
+                    break;
+                case "Prima data selezionaza":
+                    $messaggio = "Primera fecha seleccionada";
+                    $tr = 1;
+                    break;
+                case "data attuale":
+                    $messaggio = "fecha actual";
+                    $tr = 1;
+                    break;
+                case "data fissa":
+                    $messaggio = "fech fija";
+                    $tr = 1;
+                    break;
+                case "Numero di settimane della tabella":
+                    $messaggio = "Número de semanas de la tabla";
+                    $tr = 1;
+                    break;
+                case "Numero di giorni della tabella":
+                    $messaggio = "Número de dias dela tabla";
+                    $tr = 1;
+                    break;
+                case "Crea la pagina con il calendario della disponibilità":
+                    $messaggio = "Crear la página con el calendario de la disponibilidad";
+                    $tr = 1;
+                    break;
+                case "è stato selezionato di raggruppare con le regole 2, ma non ne è stata inserita nessuna, quindi la tabella non verrà mostrata":
+                    $messaggio = "se ha seleccionado agrupar con las reglas 2, pero ninguna ha sido insertada, así que no se mostrará la tabla";
+                    $tr = 1;
+                    break;
+                case "":
+                    $messaggio = "";
+                    $tr = 1;
+                    break;
+                case "":
+                    $messaggio = "";
+                    $tr = 1;
+                    break;
 
-case "var_stile_tabella_cal":  		$messaggio = "var_estilo_tabla_cal"; $tr = 1; break;
-case "var_data_preselezionata":  	$messaggio = "var_fecha_preseleccionada"; $tr = 1; break;
-case "var_numero_giorni":  		$messaggio = "var_numero_dias"; $tr = 1; break;
-case "var_fr_":  			$messaggio = "var_fr_"; $tr = 1; break;
-case "var_fr_":  			$messaggio = "var_phr_"; $tr = 1; break;
-} # fine switch ($messaggio)
-} # fine if ($lingua_mex == "es")
+                case "var_stile_tabella_cal":
+                    $messaggio = "var_estilo_tabla_cal";
+                    $tr = 1;
+                    break;
+                case "var_data_preselezionata":
+                    $messaggio = "var_fecha_preseleccionada";
+                    $tr = 1;
+                    break;
+                case "var_numero_giorni":
+                    $messaggio = "var_numero_dias";
+                    $tr = 1;
+                    break;
+                case "var_fr_":
+                    $messaggio = "var_fr_";
+                    $tr = 1;
+                    break;
+                case "var_fr_":
+                    $messaggio = "var_phr_";
+                    $tr = 1;
+                    break;
+            } # fine switch ($messaggio)
+        } # fine if ($lingua_mex == "es")
 
-if ($tr != 1) {
-if ($lingua) $messaggio = mex2($messaggio,$pag,$lingua);
-else $messaggio = mex($messaggio,$pag);
-} # fine if ($tr != 1)
+        if ($tr != 1) {
+            if ($lingua) $messaggio = mex2($messaggio, $pag, $lingua);
+            else $messaggio = mex($messaggio, $pag);
+        } # fine if ($tr != 1)
 
-} # fine if ($tr != 1)
+    } # fine if ($tr != 1)
 
-return $messaggio;
+    return $messaggio;
 } # fine function mext_cal
-
 
 
 $fr_frase = "";
@@ -137,7 +250,6 @@ $frase[16] = "-->";
 $frase[17] = "<--";
 
 $num_frasi = count($fr_frase);
-
 
 
 ?>

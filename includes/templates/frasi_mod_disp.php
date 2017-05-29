@@ -21,8 +21,6 @@
 ##################################################################################
 
 
-
-
 $fr_frase = "";
 $frase = "";
 
@@ -234,8 +232,6 @@ $frase[100] = "posizioni vicine";
 $frase[101] = "con posizioni vicine";
 
 $num_frasi = count($fr_frase);
-
-
 
 
 ?>

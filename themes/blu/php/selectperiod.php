@@ -21,7 +21,6 @@
 ##################################################################################
 
 
-
 global $id_select_dates_menu;
 if (!$id_select_dates_menu) $id_select_dates_menu = 0;
 if (!$js) $id_select_dates_menu++;
@@ -29,16 +28,15 @@ if (!$standalone_dates_menu) $events = " onChange=\\\"update_selected_dates('$id
 elseif (!$js) $id_select_dates_menu++;
 
 
-
 if (!$js) {
-echo "<script type=\"text/javascript\">
+    echo "<script type=\"text/javascript\">
 <!--
 ";
-$doc_write_parentesis = "document.write(";
-$close_parentesis = ")";
+    $doc_write_parentesis = "document.write(";
+    $close_parentesis = ")";
 } # fine if (!$js)
 else {
-echo "
+    echo "
 if (window.id_sdm === undefined) {
 id_sdm = 0;
 var elem_sdm = 1;
@@ -49,20 +47,20 @@ elem_sdm = document.getElementById('id_sdm'+id_sdm);
 }
 id_sdm++;
 ";
-if (!$standalone_dates_menu) $events = " onChange=\\\"update_selected_dates(\"+id_sdm+\")\\\"";
-else echo "id_sdm++;
+    if (!$standalone_dates_menu) $events = " onChange=\\\"update_selected_dates(\"+id_sdm+\")\\\"";
+    else echo "id_sdm++;
 ";
-$doc_write_parentesis = "$js += ";
-$close_parentesis = "";
+    $doc_write_parentesis = "$js += ";
+    $close_parentesis = "";
 } # fine else if (!$js)
 
 if ($second_date_selected) {
-if (!strcmp(preg_replace("/[0-9]{4,4}-[0-9]{2,2}-[0-9]{2,2}/","",$second_date_selected),"")) {
-if (!$js) echo "var second_date_selected$id_select_dates_menu = '$second_date_selected';
+    if (!strcmp(preg_replace("/[0-9]{4,4}-[0-9]{2,2}-[0-9]{2,2}/", "", $second_date_selected), "")) {
+        if (!$js) echo "var second_date_selected$id_select_dates_menu = '$second_date_selected';
 ";
-else echo "window['second_date_selected'+id_sdm] = '$second_date_selected';
+        else echo "window['second_date_selected'+id_sdm] = '$second_date_selected';
 ";
-} # fine if (!strcmp(preg_replace("/[0-9]{4,4}-[0-9]{2,2}-[0-9]{2,2}/","",$second_date_selected),""))
+    } # fine if (!strcmp(preg_replace("/[0-9]{4,4}-[0-9]{2,2}-[0-9]{2,2}/","",$second_date_selected),""))
 } # fine if ($second_date_selected)
 
 if (!$js) echo "document.write(\"<select name=\\\"$name_date_var\\\" id=\\\"id_sdm$id_select_dates_menu\\\"$events>\");
@@ -74,33 +72,33 @@ if ($show_blank_option) echo "$doc_write_parentesis\"<option value=\\\"\\\"$blan
 
 
 if ($last_dates_menu != $file) {
-$hide_default_dates = 1;
-echo "giorni = new Array($d_names);
+    $hide_default_dates = 1;
+    echo "giorni = new Array($d_names);
 mesi = new Array($m_names);
 opz = \"\";
 ";
-$periods_num = count($d_increment);
-$day_name = "";
-for ($num1 = 0 ; $num1 < $periods_num ; $num1++) if ($d_increment[$num1] != 7) $day_name = "+giorni[d.getDay()]";
-for ($num1 = 0 ; $num1 < $periods_num ; $num1++) {
-echo "giorno = ".$d_ini_menu[$num1].";
-mese = ".$m_ini_menu[$num1].";
-anno = ".$y_ini_menu[$num1].";
-for (n1 = 1 ; n1 <= ".$n_dates_menu[$num1]." ; n1++) {
+    $periods_num = count($d_increment);
+    $day_name = "";
+    for ($num1 = 0; $num1 < $periods_num; $num1++) if ($d_increment[$num1] != 7) $day_name = "+giorni[d.getDay()]";
+    for ($num1 = 0; $num1 < $periods_num; $num1++) {
+        echo "giorno = " . $d_ini_menu[$num1] . ";
+mese = " . $m_ini_menu[$num1] . ";
+anno = " . $y_ini_menu[$num1] . ";
+for (n1 = 1 ; n1 <= " . $n_dates_menu[$num1] . " ; n1++) {
 d = new Date(anno,mese,giorno);
 anno = d.getFullYear();
 mese = d.getMonth();
 giorno = d.getDate();
-opz += \"<option value=\\\"\"+anno+\"-\"+agg_zero((mese + 1))+(mese + 1)+\"-\"+agg_zero(giorno)+giorno+\"\\\">\"+mesi[mese]+\" \"+agg_zero(giorno)+giorno".$day_name."+\", \"+anno+\"<\/option>\";
-giorno = giorno + ".$d_increment[$num1].";
+opz += \"<option value=\\\"\"+anno+\"-\"+agg_zero((mese + 1))+(mese + 1)+\"-\"+agg_zero(giorno)+giorno+\"\\\">\"+mesi[mese]+\" \"+agg_zero(giorno)+giorno" . $day_name . "+\", \"+anno+\"<\/option>\";
+giorno = giorno + " . $d_increment[$num1] . ";
 } // fine for n1
 ";
-} # fine for $num1
+    } # fine for $num1
 } # fine if ($last_dates_menu != $file)
 
 
-if ($date_selected) echo $doc_write_parentesis."opz.replace(\"$date_selected\\\">\",\"$date_selected\\\" selected>\")$close_parentesis;";
-else echo $doc_write_parentesis."opz$close_parentesis;";
+if ($date_selected) echo $doc_write_parentesis . "opz.replace(\"$date_selected\\\">\",\"$date_selected\\\" selected>\")$close_parentesis;";
+else echo $doc_write_parentesis . "opz$close_parentesis;";
 
 echo "
 $doc_write_parentesis\"<\/select>\"$close_parentesis;
@@ -112,9 +110,6 @@ if (!$js) echo "//-->
 else echo "$js += \"<input type=\\\"button\\\" class=\\\"dbutton\\\" id=\\\"bcal\"+id_sdm+\"\\\" onclick=\\\"mos_cal(\"+id_sdm+\")\\\" value=\\\"..\\\">\
 <div id=\\\"cal\"+id_sdm+\"\\\" class=\\\"datepick\\\"><\/div>\";
 ";
-
-
-
 
 
 ?>

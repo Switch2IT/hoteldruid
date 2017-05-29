@@ -294,27 +294,26 @@ $num_var_predef_ripeti = $num_var_predef - $num_var_non_ripeti;
 
 if ($num_commenti_pers) {
 # deve essere maggiore di $numero_inserimento_pers
-$numero_ins_comm_pers = 38;
-for ($num_v = ($num_var_predef - 1) ; $num_v >= $numero_ins_comm_pers ; $num_v--) $var_predef[($num_v + $num_commenti_pers)] = $var_predef[$num_v];
-for ($num_v = 0 ; $num_v < $num_commenti_pers ; $num_v++) {
-$var_predef[($numero_ins_comm_pers + $num_v)] = $commento_personalizzato_.$campi_pers_comm[$num_v];
-} # fine for $num_v
-$num_var_predef = $num_var_predef + $num_commenti_pers;
-$num_var_predef_ripeti = $num_var_predef_ripeti + $num_commenti_pers;
+    $numero_ins_comm_pers = 38;
+    for ($num_v = ($num_var_predef - 1); $num_v >= $numero_ins_comm_pers; $num_v--) $var_predef[($num_v + $num_commenti_pers)] = $var_predef[$num_v];
+    for ($num_v = 0; $num_v < $num_commenti_pers; $num_v++) {
+        $var_predef[($numero_ins_comm_pers + $num_v)] = $commento_personalizzato_ . $campi_pers_comm[$num_v];
+    } # fine for $num_v
+    $num_var_predef = $num_var_predef + $num_commenti_pers;
+    $num_var_predef_ripeti = $num_var_predef_ripeti + $num_commenti_pers;
 } # fine if ($num_commenti_pers)
 
 if ($num_campi_pers_cliente) {
-$numero_inserimento_pers = 31;
-for ($num_v = ($num_var_predef - 1) ; $num_v >= $numero_inserimento_pers ; $num_v--) $var_predef[($num_v + $num_campi_pers_cliente)] = $var_predef[$num_v];
-for ($num_v = 0 ; $num_v < $num_campi_pers_cliente ; $num_v++) {
-$opt_pers = explode("<",$campi_pers_cliente[$num_v]);
-$var_predef[($numero_inserimento_pers + $num_v)] = $campo_personalizzato_.$opt_pers[0];
-} # fine for $num_v
-$num_var_predef = $num_var_predef + $num_campi_pers_cliente;
-$num_var_predef_ripeti = $num_var_predef_ripeti + $num_campi_pers_cliente;
-$numero_ins_comm_pers = $numero_ins_comm_pers + $num_campi_pers_cliente;
+    $numero_inserimento_pers = 31;
+    for ($num_v = ($num_var_predef - 1); $num_v >= $numero_inserimento_pers; $num_v--) $var_predef[($num_v + $num_campi_pers_cliente)] = $var_predef[$num_v];
+    for ($num_v = 0; $num_v < $num_campi_pers_cliente; $num_v++) {
+        $opt_pers = explode("<", $campi_pers_cliente[$num_v]);
+        $var_predef[($numero_inserimento_pers + $num_v)] = $campo_personalizzato_ . $opt_pers[0];
+    } # fine for $num_v
+    $num_var_predef = $num_var_predef + $num_campi_pers_cliente;
+    $num_var_predef_ripeti = $num_var_predef_ripeti + $num_campi_pers_cliente;
+    $numero_ins_comm_pers = $numero_ins_comm_pers + $num_campi_pers_cliente;
 } # fine if ($num_campi_pers_cliente)
-
 
 
 $var_predef_data = "";
@@ -332,7 +331,6 @@ $var_predef_data['scadenza_documento_ospite'] = 1;
 $var_predef_data['data_inizio_selezione'] = 1;
 $var_predef_data['data_fine_selezione'] = 1;
 $var_predef_data['oggi'] = 1;
-
 
 
 $var_riserv = "";
@@ -490,7 +488,6 @@ $var_riserv['incr_np'] = 1;
 $var_riserv['filelock'] = 1;
 $var_riserv['data_primo_arrivo'] = 1;
 $var_riserv['data_ultima_partenza'] = 1;
-
 
 
 ?>

@@ -26,6 +26,4 @@ $theme_name["ita"] = "semplice";
 $theme_name["es"] = "simple";
 
 
-
-
 ?>

@@ -26,6 +26,4 @@ $theme_name["ita"] = "colori";
 $theme_name["es"] = "colores";
 
 
-
-
 ?>

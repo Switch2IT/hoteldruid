@@ -22,8 +22,8 @@
 
 
 if ($pag != "visualizza_contratto.php" or $show_bar != "NO") {
-if ($show_bar == "NO") echo "</td></tr></table>";
-else echo "
+    if ($show_bar == "NO") echo "</td></tr></table>";
+    else echo "
 </div>
 
 <script type=\"text/javascript\">
@@ -35,7 +35,7 @@ replica_tasti();
 } # fine if ($pag != "visualizza_contratto.php" or $show_bar != "NO")
 
 if ($pag == "inizio.php") {
-echo "
+    echo "
 <script type=\"text/javascript\">
 <!--
 attiva_seleziona_icona_tab('');
@@ -45,7 +45,7 @@ attiva_seleziona_icona_tab('');
 } # fine if ($pag == "inizio.php")
 
 if ($pag == "visualizza_tabelle.php" and $tipo_tabella == "prenotazioni") {
-echo "
+    echo "
 <script type=\"text/javascript\">
 <!--
 var lista_prenota_contr_orig = '$lista_prenota_contr';
@@ -57,7 +57,7 @@ attiva_seleziona_uguali('');
 } # fine if ($pag == "visualizza_tabelle.php" and...
 
 if ($pag == "modifica_prenota.php" or $pag == "modifica_cliente.php") {
-echo "
+    echo "
 <script type=\"text/javascript\">
 <!--
 ridim_col_modres();
@@ -67,7 +67,7 @@ ridim_col_modres();
 } # fine if ($pag == "modifica_prenota.php" or $pag == "modifica_cliente.php")
 
 if ($mobile_device) {
-echo "
+    echo "
 <script type=\"text/javascript\">
 <!--
 tab_in_container();
@@ -77,21 +77,17 @@ tab_in_container();
 } # fine if ($mobile_device)
 
 
-
 if ($start_time) {
-$start_time = explode(" ",$start_time);
-$start_time = (double) $start_time[0] + (double) $start_time[1];
-$end_time = explode(" ",microtime());
-$end_time = (double) $end_time[0] + (double) $end_time[1];
-echo "<small><small>seconds: ".round(($end_time - $start_time),2)."</small></small>";
+    $start_time = explode(" ", $start_time);
+    $start_time = (double)$start_time[0] + (double)$start_time[1];
+    $end_time = explode(" ", microtime());
+    $end_time = (double)$end_time[0] + (double)$end_time[1];
+    echo "<small><small>seconds: " . round(($end_time - $start_time), 2) . "</small></small>";
 } # fine if ($start_time)
 
 echo "
 </body>
 </html>";
-
-
-
 
 
 ?>

@@ -32,176 +32,191 @@ $DATETIME = "text";
 $MEDIUMTEXT = "text";
 
 
-function connetti_db ($database,$host,$port,$user,$password,$estensione) {
+function connetti_db($database, $host, $port, $user, $password, $estensione)
+{
 
-if ($estensione == "SI") dl("sqlite3.so");
-if (defined("C_PERCORSO_A_DATI")) $numconnessione = new SQLite3(C_PERCORSO_A_DATI."db_".$database);
-else $numconnessione = new SQLite3(C_DATI_PATH."/db_".$database);
-return $numconnessione;
+    if ($estensione == "SI") dl("sqlite3.so");
+    if (defined("C_PERCORSO_A_DATI")) $numconnessione = new SQLite3(C_PERCORSO_A_DATI . "db_" . $database);
+    else $numconnessione = new SQLite3(C_DATI_PATH . "/db_" . $database);
+    return $numconnessione;
 
 } # fine function connetti_db
 
 
-function disconnetti_db ($numconnessione) {
+function disconnetti_db($numconnessione)
+{
 
-$risul = $numconnessione->close();
-return $risul;
+    $risul = $numconnessione->close();
+    return $risul;
 
 } # fine function disconnetti_db
 
 
-function esegui_query_reale ($query,$silenzio = "") {
-global $numconnessione;
+function esegui_query_reale($query, $silenzio = "")
+{
+    global $numconnessione;
 
-if (str_replace(" GLOB '","",$query) != $query) {
-$query .= " ";
-$q_vett = explode(" GLOB '",$query);
-for ($n = 1 ; $n < count($q_vett) ; $n++) {
-if (substr(str_replace("''","",$q_vett[$n]),0,1) != "'") {
-$arg = str_replace("''","^'^",$q_vett[$n]);
-$arg = explode("' ",$arg);
-$arg = str_replace("^'^","''",$arg[0]);
-if (str_replace("''","",$arg) == str_replace("'","",str_replace("''","",$arg))) {
-$query = str_replace(" GLOB '$arg' "," GLOB '".str_replace("%","*",str_replace("_","?",$arg))."' ",$query);
-} # fine if (str_replace("''","",$arg) == str_replace("'","",str_replace("''","",$arg)))
-} # fine if (substr(str_replace("''","",$q_vett[$n]),0,1) != "'")
-} # fine for $n
-} # fine if (str_replace(" GLOB '","",$query) != $query)
+    if (str_replace(" GLOB '", "", $query) != $query) {
+        $query .= " ";
+        $q_vett = explode(" GLOB '", $query);
+        for ($n = 1; $n < count($q_vett); $n++) {
+            if (substr(str_replace("''", "", $q_vett[$n]), 0, 1) != "'") {
+                $arg = str_replace("''", "^'^", $q_vett[$n]);
+                $arg = explode("' ", $arg);
+                $arg = str_replace("^'^", "''", $arg[0]);
+                if (str_replace("''", "", $arg) == str_replace("'", "", str_replace("''", "", $arg))) {
+                    $query = str_replace(" GLOB '$arg' ", " GLOB '" . str_replace("%", "*", str_replace("_", "?", $arg)) . "' ", $query);
+                } # fine if (str_replace("''","",$arg) == str_replace("'","",str_replace("''","",$arg)))
+            } # fine if (substr(str_replace("''","",$q_vett[$n]),0,1) != "'")
+        } # fine for $n
+    } # fine if (str_replace(" GLOB '","",$query) != $query)
 
-$risul = $numconnessione->query($query);
-if ($risul) {
-$num1 = 0;
-if (strtolower(substr(trim($query),0,6)) == "select" and is_object($risul)) {
-while ($risultato[$num1] = $risul->fetchArray(SQLITE3_BOTH)) $num1++;
-$risultato['numcol'] = $risul->numColumns();
-for ($num2 = 0 ; $num2 < $risultato['numcol'] ; $num2++) $risultato['col'][$num2] = $risul->columnName($num2);
-$risul->finalize();
-} # fine if (strtolower(substr(trim($query),0,6)) == "select" and is_object($risul))
-$risultato['num'] = $num1;
-} # fine if ($risul)
-else $risultato = $risul;
+    $risul = $numconnessione->query($query);
+    if ($risul) {
+        $num1 = 0;
+        if (strtolower(substr(trim($query), 0, 6)) == "select" and is_object($risul)) {
+            while ($risultato[$num1] = $risul->fetchArray(SQLITE3_BOTH)) $num1++;
+            $risultato['numcol'] = $risul->numColumns();
+            for ($num2 = 0; $num2 < $risultato['numcol']; $num2++) $risultato['col'][$num2] = $risul->columnName($num2);
+            $risul->finalize();
+        } # fine if (strtolower(substr(trim($query),0,6)) == "select" and is_object($risul))
+        $risultato['num'] = $num1;
+    } # fine if ($risul)
+    else $risultato = $risul;
 
-if (!$risul and !$silenzio) {
-global $PHPR_TAB_PRE;
-echo "<br>ERROR in: ".str_replace(" ".$PHPR_TAB_PRE," ",$query)."<br>";
-} # fine (!$risul and !$silenzio)
+    if (!$risul and !$silenzio) {
+        global $PHPR_TAB_PRE;
+        echo "<br>ERROR in: " . str_replace(" " . $PHPR_TAB_PRE, " ", $query) . "<br>";
+    } # fine (!$risul and !$silenzio)
 
-return $risultato;
+    return $risultato;
 
 } # fine function esegui_query_reale
 
 
-if (substr($PHPR_LOG,0,2) != "SI") {
+if (substr($PHPR_LOG, 0, 2) != "SI") {
 
-function esegui_query ($query,$silenzio = "",$idlog = "") {
-$risul = esegui_query_reale($query,$silenzio);
-return $risul;
-} # fine function esegui_query
+    function esegui_query($query, $silenzio = "", $idlog = "")
+    {
+        $risul = esegui_query_reale($query, $silenzio);
+        return $risul;
+    } # fine function esegui_query
 
 } # fine if (substr($PHPR_LOG,0,2) != "SI")
 
 
 else {
-if (!function_exists("inserisci_log")) include("./includes/funzioni_log.php");
+    if (!function_exists("inserisci_log")) include("./includes/funzioni_log.php");
 
-function esegui_query ($query,$silenzio = "",$idlog = "") {
-$risul = esegui_query_reale($query,$silenzio);
+    function esegui_query($query, $silenzio = "", $idlog = "")
+    {
+        $risul = esegui_query_reale($query, $silenzio);
 
-if ($idlog != 1) inserisci_log($query,$idlog);
+        if ($idlog != 1) inserisci_log($query, $idlog);
 
-return $risul;
+        return $risul;
 
-} # fine function esegui_query
+    } # fine function esegui_query
 
 } # fine else if (substr($PHPR_LOG,0,2) != "SI")
 
 
-function risul_query ($query,$riga,$colonna,$tab="") {
+function risul_query($query, $riga, $colonna, $tab = "")
+{
 
 #if ($tab) $colonna = "$tab.$colonna";
-$risul = $query[$riga][$colonna];
-return $risul;
+    $risul = $query[$riga][$colonna];
+    return $risul;
 
 } # fine function risul_query
 
 
-function numlin_query ($query) {
+function numlin_query($query)
+{
 
-return $query['num'];
+    return $query['num'];
 
 } # fine function numlin_query
 
 
-function aggslashdb ($stringa) {
-global $numconnessione;
+function aggslashdb($stringa)
+{
+    global $numconnessione;
 
-$risul = $numconnessione->escapeString($stringa);
-return $risul;
+    $risul = $numconnessione->escapeString($stringa);
+    return $risul;
 
 } # fine function aggslashdb
 
 
-function arraylin_query ($query,$num) {
+function arraylin_query($query, $num)
+{
 
-return $query[$num];
+    return $query[$num];
 
 } # fine function arraylin_query
 
 
-function numcampi_query ($query) {
+function numcampi_query($query)
+{
 
-return $query['numcol'];
+    return $query['numcol'];
 
 } # fine function numcampi_query
 
 
-function nomecampo_query ($query,$num) {
+function nomecampo_query($query, $num)
+{
 
-return $query['col'][$num];
+    return $query['col'][$num];
 
 } # fine function nomecampo_query
 
 
-function tipocampo_query ($query,$num) {
+function tipocampo_query($query, $num)
+{
 
-$risul = "unknown";
-return $risul;
+    $risul = "unknown";
+    return $risul;
 
 } # fine function tipocampo_query
 
 
-function dimcampo_query ($query,$num) {
+function dimcampo_query($query, $num)
+{
 
-$risul = "unknown";
-return $risul;
+    $risul = "unknown";
+    return $risul;
 
 } # fine function dimcampo_query
 
 
-function lock_tabelle ($tabelle,$altre_tab_usate = "") {
-global $numconnessione;
+function lock_tabelle($tabelle, $altre_tab_usate = "")
+{
+    global $numconnessione;
 
-$risul = $numconnessione->exec("begin transaction");
-return $risul;
+    $risul = $numconnessione->exec("begin transaction");
+    return $risul;
 
 } # fine function lock_tabelle
 
 
-function unlock_tabelle ($tabelle_lock,$azione = "") {
-global $numconnessione;
+function unlock_tabelle($tabelle_lock, $azione = "")
+{
+    global $numconnessione;
 
-$numconnessione->exec("commit transaction");
+    $numconnessione->exec("commit transaction");
 
 } # fine function unlock_tabelle
 
 
-function crea_indice ($tabella,$colonne,$nome) {
-global $numconnessione;
+function crea_indice($tabella, $colonne, $nome)
+{
+    global $numconnessione;
 
-$numconnessione->exec("create index $nome on $tabella ($colonne)");
+    $numconnessione->exec("create index $nome on $tabella ($colonne)");
 
 } # fine function crea_indice
-
 
 
 ?>

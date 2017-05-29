@@ -21,7 +21,7 @@
 ##################################################################################
 
 
-global $template_name,$template_name_show,$template_file_name,$template_data_dir;
+global $template_name, $template_name_show, $template_file_name, $template_data_dir;
 $template_name = "availability_calendar_template";
 $template_name_show = "";
 $template_name_show['en'] = "Availability calendar page";
@@ -33,7 +33,6 @@ $template_file_name['en'] = "availability_calendar_tpl.php";
 $template_file_name['ita'] = "mdl_calendario_disponibilita.php";
 $template_file_name['es'] = "mdl_calendario_disponibilidad.php";
 $template_data_dir = "cal";
-
 
 
 ?>

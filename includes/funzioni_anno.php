@@ -102,7 +102,7 @@ function crea_nuovo_anno($anno, $PHPR_TAB_PRE, $DATETIME, $tipo_periodi, $giorno
 
 # Creo la tabella con i costi aggiuntivi delle prenotazioni
                 $tablecostiprenota = $PHPR_TAB_PRE . "costiprenota" . $anno;
-                $col_tablecostiprenota = "idcostiprenota integer primary key, idprenota integer, tipo varchar(2), nome varchar(40), valore float8, valore_perc float8, arrotonda float4, tasseperc float4, associasett varchar(1), settimane text, moltiplica text, categoria text, letto varchar(1), numlimite integer, idntariffe integer, variazione varchar(10), varmoltiplica text, varnumsett varchar(20), varperiodipermessi text, varbeniinv text, varappincompatibili text, vartariffeassociate varchar(10), vartariffeincomp text, datainserimento $DATETIME, hostinserimento varchar(50), utente_inserimento integer";
+                $col_tablecostiprenota = "idcostiprenota integer primary key, idprenota integer, tipo varchar(2), nome varchar(40), valore float8, valore_perc float8, arrotonda float4, tasseperc float4, associasett varchar(1), settimane text, moltiplica text, categoria text, letto varchar(1), numlimite integer, idntariffe integer, variazione varchar(10), varmoltiplica text, varnumsett varchar(20), varperiodipermessi text, varbeniinv text, varappincompatibili text, vartariffeassociate varchar(10), vartariffeincomp text, datainserimento $DATETIME, hostinserimento varchar(50), utente_inserimento integer, processed BOOLEAN DEFAULT FALSE";
                 esegui_query("create table $tablecostiprenota ($col_tablecostiprenota)");
                 $col_tablecostiprenota = estrai_col_tabella($col_tablecostiprenota);
                 crea_indice($tablecostiprenota, "idprenota", $PHPR_TAB_PRE . "iidpcostiprenota" . $anno);

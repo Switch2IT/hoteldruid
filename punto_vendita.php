@@ -1001,7 +1001,7 @@ $testo_costi
             if (!$calcolabile_js['nessuno']) $id_js = " id=\"incassa\"";
             echo "</td><td style=\"text-align: left;\"><em>" . mex("TOTALE", $pag) . "</em></td><td style=\"text-align: right;\"><b id=\"tot_costi\">$totale</b> $Euro</td>
 </tr></table></div><table cellspacing=0 style=\"padding: 1px; width: 100%; text-align: center\"><tr>
-<td><button$id_js class=\"pos\" type=\"submit\"$disabled_cassa name=\"incassa\" value=\"1\" style=\"height: 60px; width: 140px; margin: 0;\"><b>" . mex("in cassa", $pag) . "</b></button></td>
+<td></td>
 <td><button class=\"pos\" type=\"submit\"$disabled_prenota name=\"inprenota\" value=\"1\" style=\"height: 60px; width: 140px; margin: 0;\"><b>" . mex("su prenotazione", $pag) . "$testo_app</b></button></td>
 </tr></table></div>";
 

@@ -19,7 +19,6 @@
 #    You should have received a copy of the GNU Affero General Public License
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ##################################################################################
-include_once "../connector/IntegrationConnector.php";
 
 function inserisci_dati_cliente(&$cognome, &$nome, $soprannome, $titolo_cli, $sesso, $mesenascita, $giornonascita, $annonascita, &$nazionenascita, &$cittanascita, &$regionenascita, $documento, $tipodoc, $mesescaddoc, $giornoscaddoc, $annoscaddoc, &$cittadoc, &$regionedoc, &$nazionedoc, &$nazionalita, &$lingua_cli, &$nazione, &$citta, &$regione, &$via, $nomevia, $numcivico, $cap, $telefono, $telefono2, $telefono3, $fax, $email, $cod_fiscale, $partita_iva, $max_num_ordine, $id_utente_ins, $attiva_prefisso_clienti, $prefisso_clienti, $idclienti = "", $valida = "", $campi_pers_vett = "")
 {

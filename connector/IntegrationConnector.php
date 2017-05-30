@@ -21,36 +21,36 @@ class IntegrationConnector {
 
 		$contactFormData = array();
 
-		array_push( $contactFormData["id"], $clientId );
-		array_push( $contactFormData["createdOn"], $createdOn );
+		$contactFormData["id"]        = $clientId;
+		$contactFormData["createdOn"] = $createdOn;
 
 
 		if ( isset( $firstName ) && ! empty( $firstName ) ) {
-			array_push( $contactFormData["firstName"], $firstName );
+			$contactFormData["firstName"] = $firstName;
 		}
 
 		if ( isset( $lastName ) && ! empty( $lastName ) ) {
-			array_push( $contactFormData["lastName"], $lastName );
+			$contactFormData["lastName"] = $lastName;
 		}
 
 		if ( isset( $birthDate ) ) {
-			array_push( $contactFormData["birthDate"], $birthDate );
+			$contactFormData["birthDate"] = $birthDate;
 		}
 
 		if ( isset( $country ) && ! empty( $country ) ) {
-			array_push( $contactFormData["country"], $country );
+			$contactFormData["country"] = $country;
 		}
 
 		if ( isset( $state ) && ! empty( $state ) ) {
-			array_push( $contactFormData["state"], $state );
+			$contactFormData["state"] = $state;
 		}
 
 		if ( isset( $city ) && ! empty( $city ) ) {
-			array_push( $contactFormData["city"], $city );
+			$contactFormData["city"] = $city;
 		}
 
 		if ( isset( $postalCode ) && ! empty( $postalCode ) ) {
-			array_push( $contactFormData["postalCode"], $postalCode );
+			$contactFormData["postalCode"] = $postalCode;
 		}
 
 		if ( isset( $street ) && ! empty( $street ) ) {
@@ -58,23 +58,23 @@ class IntegrationConnector {
 			if ( isset( $houseNumber ) && ! empty( $houseNumber ) ) {
 				$address = $address . " " . $houseNumber;
 			}
-			array_push( $contactFormData["street"], $address );
+			$contactFormData["street"] = $address;
 		}
 
 		if ( isset( $phoneMobile ) && ! empty( $phoneMobile ) ) {
-			array_push( $contactFormData["phoneMobile"], $phoneMobile );
+			$contactFormData["phoneMobile"] = $phoneMobile;
 		}
 
 		if ( isset( $phoneWork ) && ! empty( $phoneWork ) ) {
-			array_push( $contactFormData["phoneWork"], $phoneWork );
+			$contactFormData["phoneWork"] = $phoneWork;
 		}
 
 		if ( isset( $phoneHome ) && ! empty( $phoneHome ) ) {
-			array_push( $contactFormData["phoneHome"], $phoneHome );
+			$contactFormData["phoneHome"] = $phoneHome;
 		}
 
 		if ( isset( $phoneFax ) && ! empty( $phoneFax ) ) {
-			array_push( $contactFormData["phoneFax"], $phoneFax );
+			$contactFormData["phoneFax"] = $phoneFax;
 		}
 
 		$contactInsertion = curl_init();
@@ -91,10 +91,10 @@ class IntegrationConnector {
 
 			$emailFormData = array();
 
-			array_push( $emailFormData["id"], $emailId );
-			array_push( $emailFormData["email"], $email );
-			array_push( $emailFormData["emailCaps"], strtoupper( $email ) );
-			array_push( $emailFormData["createdOn"], $createdOn );
+			$emailFormData["id"]        = $emailId;
+			$emailFormData["email"]     = $email;
+			$emailFormData["emailCaps"] = strtoupper( $email );
+			$emailFormData["createdOn"] = $createdOn;
 
 			$emailInsertion = curl_init();
 			curl_setopt( $emailInsertion, CURLOPT_URL, $insertMailUrl );
@@ -110,10 +110,10 @@ class IntegrationConnector {
 
 				$relFormData = array();
 
-				array_push( $relFormData["id"], $emailRelationId );
-				array_push( $relFormData["emailId"], $emailId );
-				array_push( $relFormData["clientId"], $clientId );
-				array_push( $relFormData["createdOn"], $createdOn );
+				$relFormData["id"]        = $emailRelationId;
+				$relFormData["emailId"]   = $emailId;
+				$relFormData["clientId"]  = $clientId;
+				$relFormData["createdOn"] = $createdOn;
 
 				$relInsertion = curl_init();
 				curl_setopt( $relInsertion, CURLOPT_URL, $insertMailRelationUrl );

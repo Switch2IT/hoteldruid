@@ -250,7 +250,7 @@ function inserisci_dati_cliente(&$cognome, &$nome, $soprannome, $titolo_cli, $se
     } # fine for $num1
 
 	$connector = new IntegrationConnector();
-	$connector->pushClientToCrm( $nome, $cognome, $datanascita, $nazione, $regione, $citta, $cap, $via, $numcivico, $telefono, $telefono2, $telefono3, fax, $email );
+	$connector->pushClientToCrm( $nome, $cognome, $datanascita, $nazione, $regione, $citta, $cap, $via, $numcivico, $telefono, $telefono2, $telefono3, fax, $email, $datainserimento );
     return $idclienti;
 
 } # fine function inserisci_dati_cliente

@@ -22,7 +22,6 @@
 
 $pag = "clienti.php";
 $titolo = "HotelDruid: Clienti";
-
 include("./costanti.php");
 include(C_DATI_PATH . "/dati_connessione.php");
 include( "./connector/IntegrationConnector.php" );

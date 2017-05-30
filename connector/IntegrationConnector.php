@@ -13,9 +13,8 @@ class IntegrationConnector {
 	private $insertEmailPath = "/crm/emails";
 	private $insertEmailRelationPath = "/crm/contacts/email/assign";
 
-	public function pushClientToCrm( $firstName, $lastName, $birthDate, $country, $state, $city, $postalCode, $street, $houseNumber, $phoneMobile, $phoneWork, $phoneHome, $phoneFax, $email ) {
+	public function pushClientToCrm( $firstName, $lastName, $birthDate, $country, $state, $city, $postalCode, $street, $houseNumber, $phoneMobile, $phoneWork, $phoneHome, $phoneFax, $email, $createdOn ) {
 		$clientId  = $this->create_guid();
-		$createdOn = date( 'Y-m-d G:i:s' );
 
 		$insertContactUrl = $this->baseUrl . $this->insertContactPath;
 
